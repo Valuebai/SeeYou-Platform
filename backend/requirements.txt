@@ -1,0 +1,16 @@
+tzlocal==2.0.0
+XlsxWriter==1.2.1
+pytz==2019.2
+Flask==1.1.1
+pymongo==3.9.0
+xlrd==1.2.0
+numpy==1.16.2
+bert_serving_server==1.9.1
+APScheduler==3.6.1
+requests==2.22.0
+Flask_Cors==3.0.8
+Werkzeug==0.15.5
+bert_serving==0.0.1
+python_dateutil==2.8.1
+flask_login==0.5.0
+github_webhook==1.0.3
