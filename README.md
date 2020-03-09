@@ -303,3 +303,40 @@ TODO 部署时不需要可直接跳过
 平台主流程使用可参考[本篇博文中的正文部分](https://juejin.im/post/5cd0117be51d456e537ef3bd)
 
 
+## linux-CentOS7 不适用docker部署项目
+
+
+1. 将项目代码克隆到linux，git clone https://github.com/Valuebai/SeeYou-Platform.git
+2. 安装python环境，本项目使用python3.6.5
+3. 安装pip包，pip install -r requirements.txt
+4. 安装mongodb，[CentOS7.4 安装mongodb](https://www.jianshu.com/p/994bc7b19b26) ，用里面不用授权的
+5. 创建登录账号
+- 使用脚本：进入./backend/，执行python createAdminUser.py
+- 直接创建：在mongodb创建【待补充】
+6. 运行项目看效果，进入./backend/，执行python run.py 
+7. 项目运行正常，linux上可使用下面的命令让其在后台运行
+- # linux 上需要先安装gunicorn -->> pip3 install gunicorn
+ sh run.sh 或者 . run.sh 运行
+```
+run.sh内容
+# shell杀死指定端口的进程，写到部署脚本里面
+kill -9 $(netstat -nlp | grep :5050 | awk '{print $7}' | awk -F"/" '{ print $1 }')
+
+# 另一个启动方式nohup python3 -u  run.py > nohup.log 2>&1 &
+# 后台运行
+nohup gunicorn -w 4 -b 0.0.0.0:5050 run:app > gunicorn.log 2>&1 &
+```
+
+开启服务器对应5050端口
+firewall-cmd --zone=public --add-port=5050/tcp --permanent 永久开启5050端口
+firewall-cmd --reload #重启firewall 每次新添加端口都要
+> 参考：[【Linux】CentOS-常用命令&新购买云服务器安装必看](https://github.com/Valuebai/awesome-python-io/issues/1)
+
+ 
+### 为Python项目创建独立的虚拟环境（可选）
+[python在win/linux创建虚拟环境](https://blog.csdn.net/luhuibo318/article/details/94011917)
+
+
+### 新购买的linux-CentOS7 云服务器部署指南
+1. [【Linux】CentOS-常用命令&新购买云服务器安装必看](https://github.com/Valuebai/awesome-python-io/issues/1)
+2. [总结python+flask项目在linux部署的五大方法](https://blog.csdn.net/luhuibo318/article/details/102688154)
