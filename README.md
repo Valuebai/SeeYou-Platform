@@ -4,7 +4,7 @@
 ![Languages](https://img.shields.io/badge/Languages-Python3.6.5-blue)
 ![Contributions](https://img.shields.io/badge/Contributions-welcome-ff69b4.svg)
 
-## Ⅰ. SeeYou平台简介
+## Ⅰ. SeeYou-2.0平台简介
 
 ### 背景
 
