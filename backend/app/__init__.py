@@ -44,5 +44,8 @@ cron_manager.start()
 
 from models import project, host, caseSuite, testingCase, testReport, cronTab, mail, mailSender
 
-from controllers import user
-from controllers import project, host, caseSuite, testingCase, testReport, cronTab, mail, mailSender, webhook
+from app.user import user
+from app.case import project, host, caseSuite, testingCase, testReport
+from app.mail import mail, mailSender
+from app.timer import cronTab
+from app.notice import webhook

@@ -1,7 +1,7 @@
 from app import app
 from github_webhook import Webhook
 from utils.cron.interfaceTestCron import Cron
-from models.cronTab import CronTab
+from app.models.cronTab import CronTab
 from app import cron_manager
 from utils import common
 import datetime

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from app import app
 from flask import jsonify, request
-from models.host import Host
+from app.models.host import Host
 from bson import ObjectId
 from utils import common
 import datetime

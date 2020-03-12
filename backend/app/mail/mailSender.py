@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from app import app
 from flask import jsonify, request
-from models.mailSender import MailSender
+from app.models.mailSender import MailSender
 from bson import ObjectId
 from utils import common
 from utils.sendReportEmail import send_report_email

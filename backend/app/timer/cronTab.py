@@ -5,7 +5,7 @@ from app import cron_manager
 from flask import jsonify, request
 from flask_login import login_required
 from utils.cron.interfaceTestCron import Cron
-from models.cronTab import CronTab
+from app.models.cronTab import CronTab
 from utils import common
 from bson import ObjectId
 import datetime

@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from app import app
-from flask import Flask, jsonify, request, abort
-from models.caseSuite import CaseSuite
-from models.testingCase import TestingCase
+from flask import jsonify, request
+from app.models.caseSuite import CaseSuite
+from app.models.testingCase import TestingCase
 from bson import ObjectId
 from utils import common
 import datetime

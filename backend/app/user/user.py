@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from app import app
 from flask import jsonify, request, render_template, make_response, abort
-from models.adminUser import AdminUser
+from app.models.adminUser import AdminUser
 from flask_login import UserMixin, login_user, logout_user
 from app import login_manager
 from werkzeug.security import generate_password_hash

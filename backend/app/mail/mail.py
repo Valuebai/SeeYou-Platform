@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from app import app
-from flask import Flask, jsonify, request, abort
-from models.mail import Mail
+from flask import jsonify, request
+from app.models.mail import Mail
 from bson import ObjectId
 from utils import common
 import datetime

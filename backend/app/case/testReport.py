@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from app import app
-from flask import Flask, jsonify, request, abort
-from models.testReport import TestReport
+from flask import jsonify, request
+from app.models.testReport import TestReport
 from bson import ObjectId
 from utils import common
 from flask_login import login_required

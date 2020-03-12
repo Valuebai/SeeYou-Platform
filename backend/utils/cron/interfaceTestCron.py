@@ -1,10 +1,9 @@
 from utils import common
-from models.caseSuite import CaseSuite
-from models.testingCase import TestingCase
-from models.mailSender import MailSender
+from app.models import CaseSuite
+from app.models import TestingCase
+from app.models import MailSender
 from testframe.interfaceTest.tester import tester
-from models.testReport import TestReport
-from utils.log_config import logger
+from app.models import TestReport
 import pymongo
 from bson import ObjectId
 import datetime

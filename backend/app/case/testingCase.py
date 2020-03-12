@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from app import app
-from flask import Flask, jsonify, request, abort, send_file
+from flask import jsonify, request, send_file
 import xlsxwriter
 import xlrd
-import ast
 import json
 from io import BytesIO
-from models.testingCase import TestingCase
-from models.caseSuite import CaseSuite
-from models.testReport import TestReport
+from app.models.testingCase import TestingCase
+from app.models.caseSuite import CaseSuite
+from app.models.testReport import TestReport
 from bson import ObjectId
 from utils import common
 import pymongo
