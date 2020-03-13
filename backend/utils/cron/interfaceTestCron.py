@@ -1,9 +1,9 @@
 from utils import common
-from app.models import CaseSuite
-from app.models import TestingCase
-from app.models import MailSender
+from app.models.caseSuite import CaseSuite
+from app.models.testingCase import TestingCase
+from app.models.mailSender import MailSender
+from app.models.testReport import TestReport
 from testframe.interfaceTest.tester import tester
-from app.models import TestReport
 import pymongo
 from bson import ObjectId
 import datetime

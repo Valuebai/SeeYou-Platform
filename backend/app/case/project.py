@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from app import app
 from flask import jsonify, request
-from app.models import Project
+from app.models.project import Project
 from bson import ObjectId
 from utils import common
 from flask_login import login_required

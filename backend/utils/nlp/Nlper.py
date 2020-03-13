@@ -1,23 +1,16 @@
 import requests
 import json
-import numpy as np
-
+from sklearn.metrics.pairwise import cosine_similarity
 
 class Nlper:
 
     def __init__(self, bert_client):
         self.bert_client = bert_client
 
-    def get_text_similarity(self, base_text, compaired_text, algorithm='cosine', magic_cut=True):
-        if isinstance(algorithm, str) and algorithm.lower() == 'cosine':
-            arrays = self.bert_client.encode([base_text, compaired_text])
-            magic_array = (arrays[0] + arrays[1]) / np.pi
-            arrays = [arrays[0] - magic_array, arrays[1] - magic_array] if magic_cut else arrays
-            norm_1 = np.linalg.norm(arrays[0])
-            norm_2 = np.linalg.norm(arrays[1])
-            dot_product = np.dot(arrays[0], arrays[1])
-            similarity = round(0.5 + 0.5 * (dot_product / (norm_1 * norm_2)), 2)
-            return similarity
+    def get_text_similarity(self, base_text, compared_text):
+        tensors = self.bert_client.encode([base_text,compared_text])
+        print('2个文本相似度为：',cosine_similarity(tensors)[0][1])
+        return cosine_similarity(tensors)[0][1]
 
     @staticmethod
     # 翻译函数，word 需要翻译的内容
@@ -48,8 +41,9 @@ class Nlper:
 
 
 if __name__ == '__main__':
-    pass
-
+    from app import nlper
+    r = nlper.get_text_similarity('美国','中国')
+    print(r)
 
 
 

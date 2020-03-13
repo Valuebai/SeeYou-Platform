@@ -45,3 +45,5 @@ dmypy.json
 /mongodb-win32-x86_64-2012plus-4.2.3-signed.msi
 /frontend/node_modules/
 /SeeYou-Linux 环境下 Docker 容器化部署.md
+/backend/logs/
+/backend/temp.py
