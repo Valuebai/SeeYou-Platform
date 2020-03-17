@@ -104,10 +104,6 @@
     // 当前目录切换至模型文件夹目录后执行
     bert-serving-start -model_dir ./chinese_L-12_H-768_A-12/ -num_worker=1
    
-    P.S.
-    linux 部署时需要开启这2个默认端口，参考文章https://baijiahao.baidu.com/s?id=1646263423663635431&wfr=spider&for=pc
-    指定客户端向服务端push数据的端口号，通过-port，默认5555
-    指定服务端向客户端发布结果的的端口号，通过-port_out，默认5556
 ```
   
 启动成功后输出如下：
@@ -193,6 +189,47 @@ TODO 部署时不需要可直接跳过
 ## Linux 环境下 Docker 容器化部署
 
 [Linux 环境下 Docker 容器化部署](https://shimo.im/docs/P3gqCTX6DpGjXWy3)
+
+
+#### linux启动bert-as-serving
+1. 安装包
+```
+    pip install tensorflow==1.14.0  -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install bert-serving-server==1.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple（centos7装了运行报错）
+    pip install bert-serving-client==1.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple（centos7装了运行报错）    
+    pip install bert-serving-server（centos7装这个）
+    pip install bert-serving-client（centos7装这个）
+    
+```
+2. 进入chinese_L-12_H-768_A-12同级目录执行下面命令
+```
+    bert-serving-start -model_dir ./chinese_L-12_H-768_A-12/ -num_worker=1
+```
+
+3. 给linux服务器增加虚拟内存
+```
+运行项目报错，提醒内存不足
+Centos/linux 服务器的内存不够了怎么办？centos用虚拟内存扩展内存：
+
+输入：free -m查看内存状态
+dd if=/dev/zero of=/opt/swap bs=1024 count=1024000 //在opt分区建立名为swap，大小为1G的虚拟内存文件
+chmod 600 /opt/swap //注意更改swap文件的权限
+mkswap /opt/swap //将swap文件设置为swap分区文件
+swapon /opt/swap //激活swap,启用分区交换文件
+free -m //看下结果
+参考：https://blog.csdn.net/herobacking/article/details/80371242
+
+【注意】重启后这个就会没了，需要重新设置
+```
+  
+4. 其他
+```
+    P.S.最后重启reboot，执行312步骤
+    
+    linux 部署时需要开启这2个默认端口，参考文章https://baijiahao.baidu.com/s?id=1646263423663635431&wfr=spider&for=pc
+    指定客户端向服务端push数据的端口号，通过-port，默认5555
+    指定服务端向客户端发布结果的的端口号，通过-port_out，默认5556
+```
 
 
 ---
