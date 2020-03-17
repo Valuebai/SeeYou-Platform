@@ -95,8 +95,8 @@
 #### 2.3 安装 python 依赖包
 ```
     pip install tensorflow==1.14.0  -i https://pypi.tuna.tsinghua.edu.cn/simple
-    pip install bert-serving-server==1.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
-    pip install bert-serving-client==1.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install bert-serving-server==1.10.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install bert-serving-client==1.10.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
   
 #### 2.4 启动模型
@@ -197,8 +197,8 @@ TODO 部署时不需要可直接跳过
     pip install tensorflow==1.14.0  -i https://pypi.tuna.tsinghua.edu.cn/simple
     pip install bert-serving-server==1.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple（centos7装了运行报错）
     pip install bert-serving-client==1.9.1 -i https://pypi.tuna.tsinghua.edu.cn/simple（centos7装了运行报错）    
-    pip install bert-serving-server（centos7装这个）
-    pip install bert-serving-client（centos7装这个）
+    pip install bert-serving-server==1.10.1（centos7装这个）
+    pip install bert-serving-client==1.10.1（centos7装这个）
     
 ```
 2. 进入chinese_L-12_H-768_A-12同级目录执行下面命令
@@ -212,7 +212,7 @@ TODO 部署时不需要可直接跳过
 Centos/linux 服务器的内存不够了怎么办？centos用虚拟内存扩展内存：
 
 输入：free -m查看内存状态
-dd if=/dev/zero of=/opt/swap bs=1024 count=1024000 //在opt分区建立名为swap，大小为1G的虚拟内存文件
+dd if=/dev/zero of=/opt/swap bs=2048 count=2048000 //在opt分区建立名为swap，大小为1G的虚拟内存文件
 chmod 600 /opt/swap //注意更改swap文件的权限
 mkswap /opt/swap //将swap文件设置为swap分区文件
 swapon /opt/swap //激活swap,启用分区交换文件
