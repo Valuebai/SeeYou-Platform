@@ -6,6 +6,7 @@ import projectInfo from '@/views/Project'
 import home from '@/views/Home'
 import about from '@/views/About'
 import more from '@/views/More'
+import uitest from '@/views/UITest'
 import automationTest from '@/views/interfaceTestProject/api/automation/AutomationTest'
 import cronList from '@/views/interfaceTestProject/api/automation/CronList'
 import caseSuiteList from '@/views/interfaceTestProject/api/automation/CaseSuiteList'
@@ -33,6 +34,7 @@ export default new Router({
       projectHidden: true,
       children: [
         { path: '/interfaceProjectList', component: interfaceProjectList, iconCls:'fa fa-plug', name: 'API接口测试'},
+        { path: '/UIProjectList', component: uitest, iconCls:'fa fa-random', name: 'UI AutoTest'},
         { path: '/aboutAuthor', component: about, iconCls:'fa fa-id-card-o', name: 'About me'},
         { path: '/more', component: more, iconCls:'fa fa-heart', name: 'More'},
       ]

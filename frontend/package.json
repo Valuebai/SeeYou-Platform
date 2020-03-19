@@ -1,8 +1,8 @@
 {
   "name": "seeyou-platform",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ai-driven-test-platform",
-  "author": "amazingTest <523314409@qq.com>",
+  "author": "Valuebai <745919068@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
