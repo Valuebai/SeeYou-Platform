@@ -40,23 +40,23 @@
  
  3.平台遵循「颜值即正义」原则，操作界面展示如下：
  
- ![输入图片说明](https://images.gitee.com/uploads/images/2019/0819/233943_1f8c3f85_5239689.png "操作界面展示.png")
+ ![输入图片说明](./images/用例接口列表界面展示.jpg "用例接口列表界面展示.jpg")
  
  4.平台拥有极佳的定时任务体验，启动定时任务后可随时停用 / 任意编辑任务内容且立即生效，同时拥有丰富的告警策略，
  页面展示如下：
  
- ![输入图片说明](https://images.gitee.com/uploads/images/2019/0819/234004_623ff92c_5239689.png "定时任务配置.png")
+ ![输入图片说明](./images/定时任务配置.png "定时任务配置.png")
  
  5.平台拥有导入 / 导出功能，支持测试人员 **"最喜爱的"** Excel 格式，易于批量生成 / 修改用例。
  
- ![输入图片说明](https://images.gitee.com/uploads/images/2019/0819/234019_f62ca3cb_5239689.png "数据导入展示.png")
+ ![输入图片说明](./images/数据导入展示.png "数据导入展示.png")
  
  6.平台拥有较为丰富的测试结果校验体系，支持**文本相似度**校验。
- ([具体内容可参考本篇博文](https://juejin.im/post/5cfe1dd96fb9a07ed7407321))
+ ([具体内容可SeeYou平台使用指南 & Ⅲ. NLP之文本相似度校验](https://shimo.im/docs/jVxDXHYdh6KPqYTP))
  
  7.平台对外提供测试任务调度接口，方便与开发项目集成。
  
- 8.......
+ 8. 待添加【web selenium】【app appium】UI自动化测试
  
  ***（还有许许多多令人惊喜的小特色等着你去探索 & 挖掘）***
  
@@ -65,7 +65,7 @@
 
 ## 思维导图
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0819/234034_604458dd_5239689.png "SeeYou平台结构图_V1.0.png")
+![输入图片说明](./images/SeeYou平台思维导图.jpg "SeeYou platform思维导图.png")
 
 ---
 ## IV . SeeYou平台部署
@@ -101,18 +101,19 @@
   
 #### 2.4 启动模型
 ```
-    // 当前目录切换至模型文件夹目录后执行
+    # 进入chinese_L-12_H-768_A-12同级目录执行下面命令
     bert-serving-start -model_dir ./chinese_L-12_H-768_A-12/ -num_worker=1
    
 ```
   
 启动成功后输出如下：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0907/132542_87013872_5239689.png "NLP模型启动成功输出.png")
+![输入图片说明](./images/NLP模型启动成功输出.png "NLP模型启动成功输出.png")
 
 ### 3. 部署 Mongodb 数据库
 
-[点击进入教程](https://www.runoob.com/mongodb/mongodb-window-install.html)
+- [windows点击进入教程](https://www.runoob.com/mongodb/mongodb-window-install.html)
+- [linux点击进入教程](https://blog.csdn.net/luhuibo318/article/details/104851472)
 
 ### 4. 设置系统环境变量
 ```
@@ -278,17 +279,17 @@ firewall-cmd --reload #重启firewall 每次新添加端口都要
 
 下列输出代表 **NLP模型** 启动失败
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0907/132647_0cc626a2_5239689.png "NLP部署失败.png")
+![输入图片说明](./images/NLP部署失败.png "NLP部署失败.png")
 
 解决步骤：
 
 1.删除 ./backend/app/init.py 中的这段代码：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0907/132654_00c14401_5239689.png "不使用NLP模型方法指南1.png")
+![输入图片说明](./images/不使用NLP模型方法1.png "不使用NLP模型方法指南1.png")
 
 2.将 ./backend/testframe/interfaceTest/tester.py 中的下列代码修改成 pass：
 
-![输入图片说明](https://images.gitee.com/uploads/images/2019/0907/132701_3dfea6a4_5239689.png "不使用NLP模型方法指南2.png")
+![输入图片说明](./images/不使用NLP模型方法2.png)
 
 完成后再启动项目时，就不会依赖于自然语言模型了~
 

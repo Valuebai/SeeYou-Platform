@@ -12,6 +12,10 @@
     第一种方式 ：windows下，在“系统设置”——“环境变量”——“用户变量”下，点击“新建” 添加进
     第二种方式 ：pycharm-设置环境变量，点击pycharm右上角的“Edit Configuration”,
                 然后点击environment variables末端的一个文件夹图标，进入第二个对话框，点击加号新增
+
+    Flask生成SECRET_KEY
+    >> import os
+    >> os.urandom(24)
 """
 import os
 
@@ -28,7 +32,7 @@ class Config:
     _SEEYOU_PLATFORM_NLP_SERVER_HOST = env_dist.get('SEEYOU_PLATFORM_NLP_SERVER_HOST', 'localhost')
     _SEEYOU_PLATFORM_SECRET_KEY = env_dist.get(
         'SEEYOU_PLATFORM_SECRET_KEY',
-        b'\xc2\xf6\xbeK\xa5\xa74\x05\xce\t\xdb\t\xdc\x12\xe9\x82\xa3\xaaw\xb0\xa3~\x93J')
+        b'2H\xf0\xd3|\xee{c\x9c}\xf4\x147E\xdf\xca\xaa\x17\xfd\x17\xd5[cD')
 
     def get_env(self):
         """获取环境变量"""

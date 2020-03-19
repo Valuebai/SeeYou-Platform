@@ -1,5 +1,4 @@
 import datetime
-from bson import ObjectId
 import random
 import copy
 import re
@@ -7,19 +6,20 @@ import ast
 import time
 from dateutil import tz
 import pymongo
-from utils.sendReportEmail import send_report_email
-from tzlocal import get_localzone
 import string
+
+from bson import ObjectId
+from utils.sendReportEmail import send_report_email
 
 
 def get_offset_between_local_and_utc():
     ts = time.time()
-    utc_offset = int((datetime.datetime.fromtimestamp(ts) - datetime.datetime.utcfromtimestamp(ts)).total_seconds() / 3600)
+    utc_offset = int(
+        (datetime.datetime.fromtimestamp(ts) - datetime.datetime.utcfromtimestamp(ts)).total_seconds() / 3600)
     return utc_offset
 
 
 def get_offset_between_shanghai_and_utc():
-    # localzone = get_localzone()
     shanghai_tz = tz.gettz('Asia/Shanghai')
     utc_tz = tz.tzutc()
     date_time_utc_now = datetime.datetime.utcnow()
@@ -31,7 +31,8 @@ def get_offset_between_shanghai_and_utc():
     return shanghai_local_offset
 
 
-def format_response_in_dic(dic, is_format_object_id=True, is_format_datetime=True, is_filter_isDeleted=True, timedelta=None):
+def format_response_in_dic(dic, is_format_object_id=True, is_format_datetime=True, is_filter_isDeleted=True,
+                           timedelta=None):
     if timedelta is None:
         timedelta = get_offset_between_local_and_utc()
     if not isinstance(dic, dict):
@@ -207,7 +208,6 @@ def get_total_num_and_arranged_data(raw_model, query_dic, fuzzy_fields=None):
 
 
 def dict_get(dic, locators, default=None):
-
     '''
 
     :param dic: 输入需要在其中取值的原始字典 <dict>
@@ -308,7 +308,6 @@ def is_slice_expression(expression):
 
 def resolve_global_var(pre_resolve_var, global_var_dic, global_var_regex='\${.*?}',
                        match2key_sub_string_start_index=2, match2key_sub_string_end_index=-1):
-
     '''
     :param pre_resolve_var: 准备进行解析的变量<str>
     :param global_var_dic: 全局变量字典<dict>
@@ -388,7 +387,8 @@ def frontend_date_str2datetime(input_str, timedelta=None):
     #  input_str -> datetime
     try:
         try:
-            date_time = datetime.datetime.strptime(pre_date_str, "%Y-%m-%dT%H:%M:%S") + datetime.timedelta(hours=timedelta)
+            date_time = datetime.datetime.strptime(pre_date_str, "%Y-%m-%dT%H:%M:%S") + datetime.timedelta(
+                hours=timedelta)
             return date_time
         except BaseException:
             date_time = datetime.datetime.strptime(pre_date_str, "%Y-%m-%d %H:%M:%S") + datetime.timedelta(
@@ -502,9 +502,9 @@ def validate_and_pre_process_import_test_case(case_suite_model, testing_case_mod
                                                    case_attribute.expected_structure.get('expectedValueRange')))
                 if is_transfer_ele2dict:
                     # TODO 判断优化: (默认值可能不是都存在)
-                    _case_info[key] = case_attribute.default if not _case_info[key] else\
+                    _case_info[key] = case_attribute.default if not _case_info[key] else \
                         list(map(lambda x: ast.literal_eval(x.replace('\'', '\"')),
-                             str(_case_info[key]).strip().split('；')))
+                                 str(_case_info[key]).strip().split('；')))
             elif attribute_type is dict:
                 _case_info[key] = ast.literal_eval(str(_case_info[key]).strip()) \
                     if _case_info[key] else {}
@@ -523,7 +523,7 @@ def validate_and_pre_process_import_test_case(case_suite_model, testing_case_mod
             elif attribute_type is float:
                 _case_info[key] = float(_case_info[key])
                 continue
-            is_valid = is_data_valid(case_attribute.expected_structure, _case_info[key])\
+            is_valid = is_data_valid(case_attribute.expected_structure, _case_info[key]) \
                 if case_attribute.expected_structure is not None else True
             if not is_valid:
                 # raise TypeError('{} 值不满足 {} 结构'.format(_case_info[key], case_attribute.expected_structure))
@@ -541,7 +541,7 @@ def is_data_valid(expected_structure, pre_validate_data):
     expected_type_range = expected_structure.get('expectedTypeRange')
     if not expected_type_range:
         return True
-    expected_value_range = expected_structure.get('expectedValueRange')\
+    expected_value_range = expected_structure.get('expectedValueRange') \
         if expected_structure.get('expectedValueRange') else []
     expected_dict = expected_structure.get('expectedDict') if expected_structure.get('expectedDict') else {}
     if not all(map(lambda x: isinstance(x, type), expected_type_range)) \
@@ -588,4 +588,3 @@ def get_random_key(digit_num=16):
 
 if __name__ == '__main__':
     pass
-

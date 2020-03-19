@@ -32,20 +32,23 @@ from utils.cron.cronManager import CronManager
 cron_manager = CronManager()
 cron_manager.start()
 
-# 如果不需要bert NLP词向量模型
-# 1. 将下面4行代码注释掉
-# 2. 再将 ./backend/testframe/interfaceTest/tester.py 中的下列代码修改成 pass：
-from utils.nlp.Nlper import Nlper
-from bert_serving.client import BertClient
-bert_ip = _config.get_nlp_server_host() if _config.get_nlp_server_host() else '127.0.0.1'
-bert_client = BertClient(ip=bert_ip, timeout=10000)
-nlper = Nlper(bert_client)
+# # 如果不需要bert NLP词向量模型
+# # 1. 将下面4行代码注释掉
+# # 2. 再将 ./backend/testframe/interfaceTest/tester.py 中的下列代码修改成 pass：
+# from utils.nlp.Nlper import Nlper
+# from bert_serving.client import BertClient
+# bert_ip = _config.get_nlp_server_host() if _config.get_nlp_server_host() else '127.0.0.1'
+# bert_client = BertClient(ip=bert_ip, timeout=10000)
+# nlper = Nlper(bert_client)
 
 
-from models import project, host, caseSuite, testingCase, testReport, cronTab, mail, mailSender
-
+# 导入mongo的ORM
+from app.models import project, host, caseSuite, testingCase, testReport, cronTab, mail, mailSender
+# 导入路由
 from app.user import user
-from app.case import project, host, caseSuite, testingCase, testReport
+from app.project import project
+from app.host import host
+from app.case import caseSuite, testingCase, testReport
 from app.mail import mail, mailSender
 from app.timer import cronTab
 from app.notice import webhook
