@@ -6,10 +6,12 @@ sys.path.append('..')
 from flask import Flask
 from flask_cors import CORS
 from utils.mango import *
+from utils.log_config import logger
 from config import Config
 from flask_login import LoginManager
 from datetime import timedelta
 
+logger.info('Starting Flask Project, 初始化项目')
 app = Flask(__name__,
             static_folder="../../dist/static",
             template_folder="../../dist")
@@ -43,7 +45,7 @@ cron_manager.start()
 
 
 # 导入mongo的ORM
-from app.models import project, host, caseSuite, testingCase, testReport, cronTab, mail, mailSender
+from app.models import adminUser, caseSuite, cronTab, host, mail, mailSender, project, testingCase, testReport
 # 导入路由
 from app.user import user
 from app.project import project
