@@ -4,7 +4,7 @@ pytz==2019.2
 Flask==1.1.1
 pymongo==3.9.0
 xlrd==1.2.0
-numpy==1.16.2
+numpy==1.22.0
 bert_serving_server==1.10.1
 bert-serving-client==1.10.1
 APScheduler==3.6.1
